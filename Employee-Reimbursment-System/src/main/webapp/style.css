@@ -1,0 +1,28 @@
+
+th {
+    color:blue;
+}
+
+h1 {
+	color:crimson
+}
+
+.form-control {
+	color: blue
+}
+
+.myGroup{
+    background-color: blanchedalmond;
+}
+
+.button{
+    background-color:cyan;
+}
+
+.success{
+	color: blue	
+}
+
+.failure{
+	color: red	
+}
