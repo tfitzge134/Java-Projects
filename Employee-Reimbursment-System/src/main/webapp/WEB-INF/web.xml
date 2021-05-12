@@ -2,12 +2,12 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>ERS</display-name>
   <servlet>
-    <servlet-name>ErsServlet</servlet-name>
-    <servlet-class>com.revature.controllers.ErsServlet</servlet-class>
+    <servlet-name>FrontControllerServlet</servlet-name>
+    <servlet-class>com.revature.controllers.FrontControllerServlet</servlet-class>
     <load-on-startup>0</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ErsServlet</servlet-name>
+    <servlet-name>FrontControllerServlet</servlet-name>
     <url-pattern>/ers</url-pattern>
   </servlet-mapping>
 </web-app>

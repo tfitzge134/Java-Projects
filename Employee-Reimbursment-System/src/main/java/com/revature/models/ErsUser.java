@@ -1,6 +1,6 @@
 package com.revature.models;
 
-public class ErsUsers {
+public class ErsUser {
 	private int ersUserId;
 	private String ersUsername;
 
@@ -13,7 +13,11 @@ public class ErsUsers {
 	private String userEmail;
 	private int userRoleId;
 
-	public ErsUsers(int ersUserId, String ersUsername, String ersPassword, String userFirstname, String userLastname,
+	public ErsUser() {
+
+	}
+
+	public ErsUser(int ersUserId, String ersUsername, String ersPassword, String userFirstname, String userLastname,
 			String userEmail, int userRoleId) {
 		super();
 		this.ersUserId = ersUserId;
