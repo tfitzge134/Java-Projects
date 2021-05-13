@@ -1,11 +1,11 @@
 package com.revature.models;
 
-public class ErsUserRoles {
+public class ErsUserRole {
 	private int ersUserroleId;
 
 	private String ersUserrole;
 
-	public ErsUserRoles(int ersUserroleId, String ersUserrole) {
+	public ErsUserRole(int ersUserroleId, String ersUserrole) {
 		super();
 		this.ersUserroleId = ersUserroleId;
 		this.ersUserrole = ersUserrole;

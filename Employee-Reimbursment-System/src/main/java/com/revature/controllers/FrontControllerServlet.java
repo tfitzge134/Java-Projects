@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.revature.delegates.LoginDelegate;
+import com.revature.util.HtmlUtil;
 
 /**
  * Servlet implementation class HelloServlet
  */
-@WebServlet("/ers")
+@WebServlet("/front")
 public class FrontControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,7 +25,6 @@ public class FrontControllerServlet extends HttpServlet {
 	 */
 	public FrontControllerServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -69,29 +69,30 @@ public class FrontControllerServlet extends HttpServlet {
 		return false;
 	}
 
-	private void handleTask(String task, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void handleTask(String task, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		response.setContentType("text/html");
 
 		PrintWriter writer = response.getWriter();
-		writer.print("<!DOCTYPE html>" + "<html>" + "<head>" + "<meta charset=\"UTF-8\">"
-				+ " <link rel=\"stylesheet\" href=\"style.css\"/>" + "<title>Welcome to Reva</title>" + "</head>"
-				+ "</head>" + "    <body>" + "        <div>" + "");
 
-		writeReponseForTask(task, writer, request, response);
-
-		writer.print("</div>" + "    </body>" + "</html>");
-	}
-
-	private void writeReponseForTask(String task, PrintWriter writer, HttpServletRequest request,
-			HttpServletResponse response) {
 		switch (task) {
 		case "login":
-			LoginDelegate.writeReponse(writer, request, response);
+			LoginDelegate.handleTask(writer, request, response);
+			break;
+		case "logout":
+			LogoutDelegate.handleTask(writer, request, response);
+			break;
+		case "my-pending-reimbursments":
+			MyReimbursementsDelegate.handleTask(writer, request, response);
+			break;
+		case "my-resolved-reimbursments":
+			MyReimbursementsDelegate.handleTask(writer, request, response);
 			break;
 		default:
+			HtmlUtil.writerHtmlHeader(writer);
 			writer.print("<div>");
 			writer.print("Unsupported task: " + task);
 			writer.print("</div>");
+			HtmlUtil.writerHtmlFooter(writer);
 		}
 	}
 
