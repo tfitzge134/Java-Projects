@@ -35,15 +35,15 @@ public class LoginDelegate {
 			return;
 		}
 
-		ErsUsersDAO dao = new ErsUsersDAOImpl();
+		ErsUsersDAO userDao = new ErsUsersDAOImpl();
 		try {
-			ErsUser user = dao.verifyPassword(username, password);
+			ErsUser user = userDao.verifyPassword(username, password);
 			if (user == null) {
 				writer.print("Invalid login credentials.<br>");
 			} else {
 				int userRoleId = user.getUserRoleId();
-				ErsUsersRoleDAO dao = new ErsUsersRoleDAOImpl();
-				ErsUserRole role = dao.getById(userRoleId);
+				ErsUsersRoleDAO roleDao = new ErsUsersRoleDAOImpl();
+				ErsUserRole role = roleDao.getById(userRoleId);
 				
 				HttpSession session = request.getSession(true);
 				session.setAttribute("current-user", user);
@@ -60,14 +60,6 @@ public class LoginDelegate {
 		
 	}
 
-	private static void writeUserHomePage(PrintWriter writer, ErsUser user) {
-		writer.print("Login Success<br>");
-		writer.print(user.toString());
-		
-		if(ersUserRole.getErsUserrole().equals("employee")) {
-			
-		}
-		
-	}
+	
 
 }

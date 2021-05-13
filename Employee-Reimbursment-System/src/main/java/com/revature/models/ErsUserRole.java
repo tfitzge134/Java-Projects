@@ -4,6 +4,9 @@ public class ErsUserRole {
 	private int ersUserroleId;
 
 	private String ersUserrole;
+	
+	public ErsUserRole() {
+	}
 
 	public ErsUserRole(int ersUserroleId, String ersUserrole) {
 		super();

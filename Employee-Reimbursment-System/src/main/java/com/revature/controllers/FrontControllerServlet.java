@@ -46,7 +46,7 @@ public class FrontControllerServlet extends HttpServlet {
 		String task = request.getParameter("task");
 		// if task is null forward to home screen.
 		if (task == null) {
-			RequestDispatcher rd = request.getRequestDispatcher("login.html");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 			return;
 		}
@@ -62,7 +62,7 @@ public class FrontControllerServlet extends HttpServlet {
 			throws ServletException, IOException {
 		switch (task) {
 		case "login-form":
-			RequestDispatcher rd = request.getRequestDispatcher("login.html");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 			return true;
 		}

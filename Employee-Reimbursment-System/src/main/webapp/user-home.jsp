@@ -12,7 +12,7 @@
 
 	<%
 	ErsUser user = (ErsUser) session.getAttribute("current-user");
-	ErsUserRole role = (ErsUser) session.getAttribute("current-user-role");
+	ErsUserRole role = (ErsUserRole) session.getAttribute("current-user-role");
 	String roleName = role.getErsUserrole();
 	%>
 	<div>
@@ -28,6 +28,14 @@
 		<a href="front?task=my-pending-reimbursments">Pending reimbursements</a>
 		<a href="front?task=my-resolved-reimbursments">Resolved reimbursements</a>
 		<a href="front?task=my-information">My information</a>
+
+		<%
+		}
+		
+		else if (roleName.equalsIgnoreCase("manager")) {
+		%>
+
+		Manager stuff....
 
 		<%
 		}

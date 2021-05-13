@@ -13,7 +13,7 @@ import util.ConnectionUtil;
 public class ErsUsersRoleDAOImpl implements ErsUsersRoleDAO {
 
 	@Override
-	public ErsUserRole getById(int id) {
+	public ErsUserRole getById(int id) throws BusinessException {
 		Connection conn = null;
 		try {
 			conn = ConnectionUtil.getConnection();

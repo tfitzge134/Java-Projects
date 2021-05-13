@@ -19,7 +19,7 @@ public class LogoutDelegate {
 		}
 		request.setAttribute("message", "You're Logged out!");
 
-		RequestDispatcher rd = request.getRequestDispatcher("login.html");
+		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 		rd.forward(request, response);
 
 	}
