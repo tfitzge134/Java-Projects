@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.revature.delegates.LoginDelegate;
+import com.revature.delegates.LogoutDelegate;
+import com.revature.delegates.MyReimbursementsDelegate;
+import com.revature.delegates.SubmitReimbursmentDelegate;
 import com.revature.util.HtmlUtil;
 
 /**
@@ -80,6 +83,9 @@ public class FrontControllerServlet extends HttpServlet {
 			break;
 		case "logout":
 			LogoutDelegate.handleTask(writer, request, response);
+			break;
+		case "submit-reimbursment":
+			SubmitReimbursmentDelegate.handleTask(writer, request, response);
 			break;
 		case "my-pending-reimbursments":
 			MyReimbursementsDelegate.handleTask(writer, request, response);

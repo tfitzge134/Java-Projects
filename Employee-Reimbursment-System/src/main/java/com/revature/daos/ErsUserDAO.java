@@ -3,7 +3,7 @@ package com.revature.daos;
 import com.revature.BusinessException;
 import com.revature.models.ErsUser;
 
-public interface ErsUsersDAO {
+public interface ErsUserDAO {
 	public boolean addUser(ErsUser user) throws BusinessException;
 
 	public boolean isEmailInUse(String email) throws BusinessException;

@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.revature.BusinessException;
-import com.revature.daos.ErsUsersDAO;
+import com.revature.daos.ErsUserDAO;
 import com.revature.models.ErsUser;
 
 import util.ConnectionUtil;
 
-public class ErsUsersDAOImpl implements ErsUsersDAO {
+public class ErsUserDAOImpl implements ErsUserDAO {
 
 	@Override
 	public boolean addUser(ErsUser user) {
@@ -68,7 +68,7 @@ public class ErsUsersDAOImpl implements ErsUsersDAO {
 
 	public static void main(String[] args) throws SQLException {
 
-		ErsUsersDAO dao = new ErsUsersDAOImpl();
+		ErsUserDAO dao = new ErsUserDAOImpl();
 		try {
 			ErsUser user = dao.verifyPassword("joe", "abc");
 			if (user == null) {

@@ -21,8 +21,6 @@ String error = (String)request.getAttribute("error");
 	<p class="success"> <%=message %> </p>
             <% 
             }
-            %>
-            <% 
             if(error !=null){
             %>
 	<p class="failure"> <%=error %> </p>
