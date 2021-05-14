@@ -16,7 +16,7 @@ import com.revature.util.HtmlUtil;
 /**
  * Servlet implementation class HelloServlet
  */
-@WebServlet("/front")
+@WebServlet("/ers")
 public class FrontControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

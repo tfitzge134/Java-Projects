@@ -1,5 +1,3 @@
-<%@page import="com.revature.models.ErsUserRole"%>
-<%@page import="com.revature.models.ErsUser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,7 +31,7 @@ String error = (String)request.getAttribute("error");
             %>
             
             <br>
-            <form action="front" method="POST">
+            <form action="ers" method="POST">
                 <input type="hidden" name="task" value="login">
                 <label>User name:</label>
                 <input type="text" name="username" class="form-control">

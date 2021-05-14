@@ -18,16 +18,16 @@
 	<div>
 		<h1>Welcome to Employee-Reimbursment-System</h1>
 
-		<a href="front?task=logout">Logout</a>
+		<a href="ers?task=logout">Logout</a>
 
 		<%
 		if (roleName.equalsIgnoreCase("employee")) {
 		%>
 
 		<a href="new-reimbursment.html">Submit-Reimbursment</a>
-		<a href="front?task=my-pending-reimbursments">Pending reimbursements</a>
-		<a href="front?task=my-resolved-reimbursments">Resolved reimbursements</a>
-		<a href="front?task=my-information">My information</a>
+		<a href="ers?task=my-pending-reimbursments">Pending reimbursements</a>
+		<a href="ers?task=my-resolved-reimbursments">Resolved reimbursements</a>
+		<a href="ers?task=my-information">My information</a>
 
 		<%
 		}
