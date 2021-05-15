@@ -15,6 +15,9 @@ public class ErsReimbursement {
 	private int reimbTypeId;
 	private int reimId;
 
+	public ErsReimbursement() {
+	}
+
 	public ErsReimbursement(int reimbId, double reimbAmount, Date reimbSubmitted, String reimbDescription,
 			byte[] reimReceipt, int reimbAuthor, Date reimbResolved, int reimbStatusId, int reimbTypeId, int reimId) {
 		super();
@@ -29,6 +32,7 @@ public class ErsReimbursement {
 		this.reimbTypeId = reimbTypeId;
 		this.reimId = reimId;
 	}
+
 
 	public int getReimbId() {
 		return reimbId;

@@ -1,7 +1,5 @@
 package com.revature.models;
 
-//ErsReimbursementStatus
-//public class ers_reimbursement_status {
 public class ErsReimbursementStatus {
 	private int reimbStatusId;
 	private String reimbStatus;

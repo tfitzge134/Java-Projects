@@ -48,7 +48,15 @@ String error = (String)request.getAttribute("error");
                 <br>
                 <label>Amount</label>
                 <input type="text" name="reimbAmount" class="form-control">
-                <br>
+                <br>         
+                <label>Type</label>
+                <select name="typeId" class="form-control">
+                <option value="">SELECT</option>
+                <option value="1">Food</option>
+                <option value="2">Travel</option>
+                <option value="3">Internet</option>
+                </select>
+                <br>         
                 <input type="submit" value="Submit" class="button">
             </form>
 	</div>

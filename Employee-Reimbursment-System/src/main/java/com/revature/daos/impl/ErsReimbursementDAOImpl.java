@@ -21,8 +21,8 @@ public class ErsReimbursementDAOImpl implements ErsReimbursementDAO {
 //		String sql1 = "insert into ers.reimb_status(reimb_status_id, reimb_status)values(?,?)";
 //		String sql2 = "insert into ers.ers_users_roles("
 //				+ "ers_users_role_id, user_role)values(?,?)";
-		String sql = "insert into res_reimbursement(reimb_amount, reimb_submitted,"
-				+ "reimb_author, reimb_status_id, reimb_type_id" + "values(?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ers.ers_reimbursement(reimb_amount, reimb_submitted,"
+				+ "reimb_author, reimb_status_id, reimb_type_id) VALUES(?, ?, ?, ?, ?)";
 
 		Connection conn = null;
 		try {

@@ -20,9 +20,9 @@ h1 {
 }
 
 .success{
-	color: blue	
+	background-color: lightgreen;
 }
 
 .failure{
-	color: red	
+	background-color: orange;
 }
