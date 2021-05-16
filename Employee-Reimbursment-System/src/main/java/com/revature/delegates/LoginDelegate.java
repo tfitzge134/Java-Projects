@@ -22,7 +22,7 @@ public class LoginDelegate {
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HtmlUtil.writerHtmlHeader(writer);
+		HtmlUtil.writerHtmlHeader(writer, request, response);
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");

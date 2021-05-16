@@ -63,16 +63,22 @@ public class FrontControllerServlet extends HttpServlet {
 
 	private boolean forwardTask(String task, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RequestDispatcher rd;
 		switch (task) {
 		case "login-form":
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
+			return true;
+		case "user-home":
+			rd = request.getRequestDispatcher("user-home.jsp");
 			rd.forward(request, response);
 			return true;
 		}
 		return false;
 	}
 
-	private void handleTask(String task, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	private void handleTask(String task, HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 		response.setContentType("text/html");
 
 		PrintWriter writer = response.getWriter();
@@ -93,8 +99,14 @@ public class FrontControllerServlet extends HttpServlet {
 		case "my-resolved-reimbursments":
 			MyReimbursementsDelegate.handleTask(writer, request, response);
 			break;
+		case "all-pending-reimbursments":
+			AllReimbursementsDelegate.handleTask(writer, request, response);
+			break;
+		case "all-resolved-reimbursments":
+			AllReimbursementsDelegate.handleTask(writer, request, response);
+			break;
 		default:
-			HtmlUtil.writerHtmlHeader(writer);
+			HtmlUtil.writerHtmlHeader(writer, request, response);
 			writer.print("<div>");
 			writer.print("Unsupported task: " + task);
 			writer.print("</div>");

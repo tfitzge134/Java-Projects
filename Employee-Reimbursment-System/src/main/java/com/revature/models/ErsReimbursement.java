@@ -1,7 +1,6 @@
 package com.revature.models;
 
 import java.sql.Date;
-import java.util.Arrays;
 
 public class ErsReimbursement {
 	private int reimbId;
@@ -10,6 +9,7 @@ public class ErsReimbursement {
 	private String reimbDescription;
 	private byte[] reimReceipt; // ;//binary stream in java bytea progress
 	private int reimbAuthor;
+	private int reimbResolver;
 	private Date reimbResolved;
 	private int reimbStatusId;
 	private int reimbTypeId;
@@ -17,22 +17,6 @@ public class ErsReimbursement {
 
 	public ErsReimbursement() {
 	}
-
-	public ErsReimbursement(int reimbId, double reimbAmount, Date reimbSubmitted, String reimbDescription,
-			byte[] reimReceipt, int reimbAuthor, Date reimbResolved, int reimbStatusId, int reimbTypeId, int reimId) {
-		super();
-		this.reimbId = reimbId;
-		this.reimbAmount = reimbAmount;
-		this.reimbSubmitted = reimbSubmitted;
-		this.reimbDescription = reimbDescription;
-		this.reimReceipt = reimReceipt;
-		this.reimbAuthor = reimbAuthor;
-		this.reimbResolved = reimbResolved;
-		this.reimbStatusId = reimbStatusId;
-		this.reimbTypeId = reimbTypeId;
-		this.reimId = reimId;
-	}
-
 
 	public int getReimbId() {
 		return reimbId;
@@ -114,12 +98,12 @@ public class ErsReimbursement {
 		this.reimId = reimId;
 	}
 
-	@Override
-	public String toString() {
-		return "ErsReimbursement [reimbId=" + reimbId + ", reimbAmount=" + reimbAmount + ", reimbSubmitted="
-				+ reimbSubmitted + ", reimbDescription=" + reimbDescription + ", reimReceipt="
-				+ Arrays.toString(reimReceipt) + ", reimbAuthor=" + reimbAuthor + ", reimbResolved=" + reimbResolved
-				+ ", reimbStatusId=" + reimbStatusId + ", reimbTypeId=" + reimbTypeId + ", reimId=" + reimId + "]";
+	public int getReimbResolver() {
+		return reimbResolver;
+	}
+
+	public void setReimbResolver(int reimbResolver) {
+		this.reimbResolver = reimbResolver;
 	}
 
 }

@@ -21,7 +21,8 @@ public class SubmitReimbursmentDelegate {
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HtmlUtil.writerHtmlHeader(writer);
+		
+		HtmlUtil.writerHtmlHeader(writer, request, response);
 
 		String reimbDescription = request.getParameter("reimbDescription");
 		if (reimbDescription == null) {

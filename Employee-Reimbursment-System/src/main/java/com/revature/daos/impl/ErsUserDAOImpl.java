@@ -43,6 +43,7 @@ public class ErsUserDAOImpl implements ErsUserDAO {
 				user.setUserLastname(rs.getString("user_last_name"));
 				user.setUserEmail(rs.getString("user_email"));
 				user.setUserRoleId(rs.getInt("user_role_id"));
+				user.setErsUsername(rs.getString("ers_username"));
 				return user;
 			} else {
 				return null;
@@ -66,21 +67,21 @@ public class ErsUserDAOImpl implements ErsUserDAO {
 		return false;
 	}
 
-	public static void main(String[] args) throws SQLException {
-
-		ErsUserDAO dao = new ErsUserDAOImpl();
-		try {
-			ErsUser user = dao.verifyPassword("joe", "abc");
-			if (user == null) {
-				System.out.print("Invalid login credentials.<br>");
-			} else {
-				System.out.print("Login Success<br>");
-				System.out.print(user.toString());
-			}
-		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.print("Error occurred: " + e.getMessage());
-		}
-	}
+//	public static void main(String[] args) throws SQLException {
+//
+//		ErsUserDAO dao = new ErsUserDAOImpl();
+//		try {
+//			ErsUser user = dao.verifyPassword("joe", "abc");
+//			if (user == null) {
+//				System.out.print("Invalid login credentials.<br>");
+//			} else {
+//				System.out.print("Login Success<br>");
+//				System.out.print(user.toString());
+//			}
+//		} catch (BusinessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			System.out.print("Error occurred: " + e.getMessage());
+//		}
+//	}
 }
