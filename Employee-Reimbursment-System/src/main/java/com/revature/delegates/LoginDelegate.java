@@ -26,18 +26,20 @@ public class LoginDelegate {
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String error = "";
+				
 		if (username == null) {
-			writer.print("Username required.<br>");
+			error += "Username required.<br>";
 		}
 		if (password == null) {
-			writer.print("Password required.<br>");
+			error += "Password required.<br>";
 		}
 		if (username != null || password != null) {
 			ErsUserDAO userDao = new ErsUserDAOImpl();
 			try {
 				ErsUser user = userDao.verifyPassword(username, password);
 				if (user == null) {
-					writer.print("Invalid login credentials.<br>");
+					error += "Invalid login credentials.<br>";
 				} else {
 					int userRoleId = user.getUserRoleId();
 					ErsUsersRoleDAO roleDao = new ErsUsersRoleDAOImpl();
@@ -49,11 +51,15 @@ public class LoginDelegate {
 
 					RequestDispatcher rd = request.getRequestDispatcher("user-home.jsp");
 					rd.forward(request, response);
+					return;
 				}
 			} catch (BusinessException e) {
 				e.printStackTrace();
-				writer.print("Error occurred: " + e.getMessage());
+				error += "Error occurred: " + e.getMessage();
 			}
+			request.setAttribute("error", error);
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
 		}
 		HtmlUtil.writerHtmlFooter(writer);
 

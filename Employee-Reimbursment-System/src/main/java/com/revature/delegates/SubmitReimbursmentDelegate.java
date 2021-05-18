@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.revature.BusinessException;
-import com.revature.ErsReimbursementStatusID;
+import com.revature.Constants;
 import com.revature.daos.ErsReimbursementDAO;
 import com.revature.daos.impl.ErsReimbursementDAOImpl;
 import com.revature.models.ErsReimbursement;
@@ -72,7 +72,7 @@ public class SubmitReimbursmentDelegate {
 				reimb.setReimbDescription(reimbDescription);
 				reimb.setReimbSubmitted(new Date(System.currentTimeMillis()));
 				reimb.setReimbAuthor(user.getErsUserId());
-				reimb.setReimbStatusId(ErsReimbursementStatusID.PENDING_STATUS_ID);
+				reimb.setReimbStatusId(Constants.PENDING_STATUS_ID);
 				reimb.setReimbTypeId(typeId);
 
 				ErsReimbursementDAO reimbDao = new ErsReimbursementDAOImpl();

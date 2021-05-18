@@ -3,7 +3,6 @@ package com.revature.models;
 import java.sql.Date;
 
 public class ErsReimbursement {
-	private int reimbId;
 	private double reimbAmount;
 	private Date reimbSubmitted;
 	private String reimbDescription;
@@ -13,7 +12,7 @@ public class ErsReimbursement {
 	private Date reimbResolved;
 	private int reimbStatusId;
 	private int reimbTypeId;
-	private int reimId;
+	private int reimbId;
 
 	public ErsReimbursement() {
 	}
@@ -88,14 +87,6 @@ public class ErsReimbursement {
 
 	public void setReimbTypeId(int reimbTypeId) {
 		this.reimbTypeId = reimbTypeId;
-	}
-
-	public int getReimId() {
-		return reimId;
-	}
-
-	public void setReimId(int reimId) {
-		this.reimId = reimId;
 	}
 
 	public int getReimbResolver() {

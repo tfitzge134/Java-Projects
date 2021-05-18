@@ -83,34 +83,45 @@ public class FrontControllerServlet extends HttpServlet {
 
 		PrintWriter writer = response.getWriter();
 
-		switch (task) {
-		case "login":
-			LoginDelegate.handleTask(writer, request, response);
-			break;
-		case "logout":
-			LogoutDelegate.handleTask(writer, request, response);
-			break;
-		case "submit-reimbursment":
-			SubmitReimbursmentDelegate.handleTask(writer, request, response);
-			break;
-		case "my-pending-reimbursments":
-			MyReimbursementsDelegate.handleTask(writer, request, response);
-			break;
-		case "my-resolved-reimbursments":
-			MyReimbursementsDelegate.handleTask(writer, request, response);
-			break;
-		case "all-pending-reimbursments":
-			AllReimbursementsDelegate.handleTask(writer, request, response);
-			break;
-		case "all-resolved-reimbursments":
-			AllReimbursementsDelegate.handleTask(writer, request, response);
-			break;
-		default:
+		try {
+			switch (task) {
+			case "login":
+				LoginDelegate.handleTask(writer, request, response);
+				break;
+			case "logout":
+				LogoutDelegate.handleTask(writer, request, response);
+				break;
+			case "submit-reimbursment":
+				SubmitReimbursmentDelegate.handleTask(writer, request, response);
+				break;
+			case "my-pending-reimbursments":
+				MyReimbursementsDelegate.handleTask(writer, request, response);
+				break;
+			case "my-resolved-reimbursments":
+				MyReimbursementsDelegate.handleTask(writer, request, response);
+				break;
+			case "all-pending-reimbursments":
+				AllReimbursementsDelegate.handleTask(writer, request, response);
+				break;
+			case "all-resolved-reimbursments":
+				AllReimbursementsDelegate.handleTask(writer, request, response);
+				break;
+			default:
+				HtmlUtil.writerHtmlHeader(writer, request, response);
+				writer.print("<div>");
+				writer.print("Unsupported task: " + task);
+				writer.print("</div>");
+				HtmlUtil.writerHtmlFooter(writer);
+			}// switch
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "ERROR: " + e.getMessage();
 			HtmlUtil.writerHtmlHeader(writer, request, response);
 			writer.print("<div>");
-			writer.print("Unsupported task: " + task);
+			writer.print(error);
 			writer.print("</div>");
 			HtmlUtil.writerHtmlFooter(writer);
+
 		}
 	}
 
