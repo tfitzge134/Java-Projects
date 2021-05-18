@@ -12,8 +12,8 @@
 	<div>
 		<h1>Welcome to Employee-Reimbursment-System</h1>
 
-		<a href="ers?task=logout">Logout</a> <br>
-		<a href="ers?task=user-home">Home</a> <br>
+		<a href="ers?task=logout">Logout</a> | 
+		<a href="ers?task=user-home">Home</a> | 
 		
 		<h3> Welcome, <%=user.getErsUsername()%>! </h3>
 		 <br> <br>
@@ -22,10 +22,10 @@
 		%>
 
 		Employee Menu:  <br> <br>
-		<a href="submit-reimbursment.jsp">Submit Reimbursment</a> <br>
-		<a href="ers?task=my-pending-reimbursments">Pending reimbursements</a> <br>
-		<a href="ers?task=my-resolved-reimbursments">Resolved reimbursements</a> <br>
-		<a href="ers?task=my-information">My information</a> <br>
+		<a href="submit-reimbursment.jsp">Submit Reimbursment</a> | 
+		<a href="ers?task=my-pending-reimbursments">Pending reimbursements</a> | 
+		<a href="ers?task=my-resolved-reimbursments">Resolved reimbursements</a> | 
+		<a href="ers?task=my-information">My information</a> | 
 
 		<%
 		}
@@ -34,9 +34,9 @@
 		%>
 
 		Manager Menu:  <br> <br>
-		<a href="ers?task=all-pending-reimbursments">All Pending reimbursements</a> <br>
-		<a href="ers?task=all-resolved-reimbursments">All Resolved reimbursements</a> <br>
-		<a href="ers?task=all-employees">All Employees</a> <br>
+		<a href="ers?task=all-pending-reimbursments">All Pending reimbursements</a> | 
+		<a href="ers?task=all-resolved-reimbursments">All Resolved reimbursements</a> | 
+		<a href="ers?task=all-employees">All Employees</a> | 
 
 		<%
 		}

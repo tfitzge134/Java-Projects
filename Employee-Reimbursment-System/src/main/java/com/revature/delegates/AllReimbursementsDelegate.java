@@ -1,4 +1,4 @@
-package com.revature.controllers;
+package com.revature.delegates;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.BusinessException;
 import com.revature.Constants;
-import com.revature.daos.ReimbursementDAO;
-import com.revature.daos.impl.ReimbursementDAOImpl;
+import com.revature.daos.ErsReimbursementDAO;
+import com.revature.daos.impl.ErsReimbursementDAOImpl;
 import com.revature.models.ErsReimbursement;
 
 public class AllReimbursementsDelegate {
@@ -35,8 +35,8 @@ public class AllReimbursementsDelegate {
 			statusId = Constants.RESOLVED_STATUS_ID;
 		}
 		
-		ReimbursementDAO dao = new ReimbursementDAOImpl();
-		List<ErsReimbursement> list = dao.getAllReimbursments(statusId);
+		ErsReimbursementDAO dao = new ErsReimbursementDAOImpl();
+		List<ErsReimbursement> list = dao.getAllByStatus(statusId);
 		if(list != null) {
 			request.setAttribute("list", list);
 		}
