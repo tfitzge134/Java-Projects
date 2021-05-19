@@ -1,3 +1,4 @@
+<%@page import="com.revature.Constants"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.revature.models.ErsReimbursement"%>
 <%@page import="java.util.List"%>
@@ -30,6 +31,9 @@
 		status = "PENDING";
 	} else if ("all-resolved-reimbursements".equals(task)) {
 		status = "RESOLVED";
+	}
+	else{
+		status = "Employee";
 	}
 	List<ErsReimbursement> list = (List<ErsReimbursement>) request.getAttribute("list");
 	if (list == null) {
@@ -67,13 +71,19 @@
 				<td><%=reimb.getReimbAmount()%></td>
 				<td><%=reimb.getReimbSubmitted()%></td>
 				<%
-				if(status.equals("PENDING")){
+				if(reimb.getReimbStatusId() == Constants.PENDING_STATUS_ID){
 				%>
 				<td><a
-					href="ers?task=approve-reimbursement&reimbId=<%=reimb.getReimbId()%>">Approve</a></td>
+					href="ers?task=approve-reimbursement&reimbId=<%=reimb.getReimbId()%>">Approve</a> | 
+					<a
+					href="ers?task=deny-reimbursement&reimbId=<%=reimb.getReimbId()%>">Deny</a></td>
 				<%
 				}
+				else{
 				%>
+				<td>
+					Resolved</td>
+				<%} %>
 			</tr>
 			<%
 			}
