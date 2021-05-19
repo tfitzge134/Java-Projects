@@ -18,13 +18,19 @@ public interface ErsReimbursementDAO {
 
 //manager can approve reimb
 	public boolean approveReimbursement(int reimbId) throws BusinessException;
+
 //manager can reject
+	public boolean rejectReimbursement(int reimbId) throws BusinessException;
 
-	public int rejectReimbursement(int reimbid) throws BusinessException;
+	public List<ErsReimbursement> getAllPending() throws BusinessException;
 
-	public List<ErsReimbursement> getAllByStatus(int statusId) throws BusinessException;
+	public List<ErsReimbursement> getAllResolved() throws BusinessException;
 
 	public List<ErsReimbursement> getByUserId(int userId) throws BusinessException;
+
+	public List<ErsReimbursement> getAllResolvedForUser(int userId) throws BusinessException;
+
+	public List<ErsReimbursement> getAllPendingForUser(int userId) throws BusinessException;
 
 }
 /*

@@ -23,9 +23,9 @@
 
 		Employee Menu:  <br> <br>
 		<a href="submit-reimbursement.jsp">Submit Reimbursement</a> | 
-		<a href="ers?task=my-pending-reimbursements">Pending reimbursements</a> | 
-		<a href="ers?task=my-resolved-reimbursements">Resolved reimbursements</a> | 
-		<a href="ers?task=my-information">My information</a> | 
+		<a href="ers?task=my-pending-reimbursements&userId=<%=user.getErsUserId()%>">Pending reimbursements</a> | 
+		<a href="ers?task=my-resolved-reimbursements&userId=<%=user.getErsUserId()%>">Resolved reimbursements</a> | 
+		<a href="ers?task=my-information&userId=<%=user.getErsUserId()%>">My information</a> | 
 
 		<%
 		}

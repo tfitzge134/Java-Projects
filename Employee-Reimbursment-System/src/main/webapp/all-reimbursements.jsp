@@ -1,3 +1,4 @@
+<%@page import="com.revature.util.ErsUserUtil"%>
 <%@page import="com.revature.Constants"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.revature.models.ErsReimbursement"%>
@@ -56,6 +57,7 @@
 				<th>Description</th>
 				<th>Amount</th>
 				<th>Submitted</th>
+				<th>Status</th>
 			</tr>
 
 			<%
@@ -72,21 +74,36 @@
 				<td><%=reimb.getReimbSubmitted()%></td>
 				<%
 				if(reimb.getReimbStatusId() == Constants.PENDING_STATUS_ID){
+					if(ErsUserUtil.getCurrentUserRoleId(request) == Constants.MANAGER_ROLE_ID){
 				%>
 				<td><a
 					href="ers?task=approve-reimbursement&reimbId=<%=reimb.getReimbId()%>">Approve</a> | 
 					<a
-					href="ers?task=deny-reimbursement&reimbId=<%=reimb.getReimbId()%>">Deny</a></td>
+					href="ers?task=reject-reimbursement&reimbId=<%=reimb.getReimbId()%>">Reject</a></td>
 				<%
+						}
+						else{
+							%>
+							<td>Pending</td>
+							<%
+						}
 				}
 				else{
+					String resolvedStatus = "";
+					if(reimb.getReimbStatusId() == Constants.APPROVED_STATUS_ID){
+						resolvedStatus = "Approved";
+					}
+					else if(reimb.getReimbStatusId() == Constants.REJECTED_STATUS_ID){
+						resolvedStatus = "Rejected";
+					}
 				%>
-				<td>
-					Resolved</td>
-				<%} %>
+				<td><%=resolvedStatus %></td>
+				<%
+				} 
+				%>
 			</tr>
 			<%
-			}
+			}//for
 			%>
 		</table>
 
