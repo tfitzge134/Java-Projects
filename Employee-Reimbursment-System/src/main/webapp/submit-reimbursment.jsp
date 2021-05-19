@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome to Employee-Reimbursment-System</title>
+<title>Welcome to Employee-Reimbursement-System</title>
 </head>
 <body>
 <%@ include file="user-menu.jsp" %>
@@ -14,12 +14,12 @@
 
 	
 	<div>
-		<h3>Submit Reimbursment-System</h3>
+		<h3>Submit Reimbursement-System</h3>
 
 		 <br>
             <br>
              <form action="ers" method="POST">
-                <input type="hidden" name="task" value="submit-reimbursment">
+                <input type="hidden" name="task" value="submit-reimbursement">
                 <label>Description:</label>
                 <input type="text" name="reimbDescription" class="form-control">
                 <br>

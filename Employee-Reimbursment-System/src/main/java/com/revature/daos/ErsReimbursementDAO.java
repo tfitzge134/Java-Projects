@@ -10,11 +10,11 @@ public interface ErsReimbursementDAO {
 
 	public List<ErsReimbursement> getAll() throws BusinessException;
 
-//	// Employee can view their resolved reimbursmentrequest
+//	// Employee can view their resolved Reimbursementrequest
 	public List<ErsReimbursement> viewResolved(int employeeId) throws BusinessException;
 
 	// employee can view information
-	public List<ErsReimbursement> getReimbursment() throws BusinessException;
+	public List<ErsReimbursement> getReimbursement() throws BusinessException;
 
 //manager can approve reimb
 	public boolean approveReimbursement(int reimbId) throws BusinessException;
@@ -23,6 +23,8 @@ public interface ErsReimbursementDAO {
 	public int rejectReimbursement(int reimbid) throws BusinessException;
 
 	public List<ErsReimbursement> getAllByStatus(int statusId) throws BusinessException;
+
+	public List<ErsReimbursement> getByUserId(int userId) throws BusinessException;
 
 }
 /*

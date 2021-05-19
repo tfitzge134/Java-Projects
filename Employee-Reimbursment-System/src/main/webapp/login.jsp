@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome to Employee-Reimbursment-System</title>
+<title>Welcome to Employee-Reimbursement-System</title>
 </head>
 <body>
 <div >
@@ -12,7 +12,7 @@
 String message = (String)request.getAttribute("message");
 String error = (String)request.getAttribute("error");
 %>
-        <h1>Welcome to Employee-Reimbursment-System</h1>
+        <h1>Welcome to Employee-Reimbursement-System</h1>
             <h3 class="myGroup">Login</h3>
             <br>
             <% 

@@ -10,7 +10,7 @@
 		String roleName = role.getErsUserrole();
 	%>
 	<div>
-		<h1>Welcome to Employee-Reimbursment-System</h1>
+		<h1>Welcome to Employee-Reimbursement-System</h1>
 
 		<a href="ers?task=logout">Logout</a> | 
 		<a href="ers?task=user-home">Home</a> | 
@@ -22,9 +22,9 @@
 		%>
 
 		Employee Menu:  <br> <br>
-		<a href="submit-reimbursment.jsp">Submit Reimbursment</a> | 
-		<a href="ers?task=my-pending-reimbursments">Pending reimbursements</a> | 
-		<a href="ers?task=my-resolved-reimbursments">Resolved reimbursements</a> | 
+		<a href="submit-reimbursement.jsp">Submit Reimbursement</a> | 
+		<a href="ers?task=my-pending-reimbursements">Pending reimbursements</a> | 
+		<a href="ers?task=my-resolved-reimbursements">Resolved reimbursements</a> | 
 		<a href="ers?task=my-information">My information</a> | 
 
 		<%
@@ -34,8 +34,8 @@
 		%>
 
 		Manager Menu:  <br> <br>
-		<a href="ers?task=all-pending-reimbursments">All Pending reimbursements</a> | 
-		<a href="ers?task=all-resolved-reimbursments">All Resolved reimbursements</a> | 
+		<a href="ers?task=all-pending-reimbursements">All Pending reimbursements</a> | 
+		<a href="ers?task=all-resolved-reimbursements">All Resolved reimbursements</a> | 
 		<a href="ers?task=all-employees">All Employees</a> | 
 
 		<%

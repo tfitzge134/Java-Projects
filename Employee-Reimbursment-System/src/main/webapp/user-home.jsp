@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome to Employee-Reimbursment-System</title>
+<title>Welcome to Employee-Reimbursement-System</title>
 </head>
 <body>
 <%@ include file="user-menu.jsp" %>

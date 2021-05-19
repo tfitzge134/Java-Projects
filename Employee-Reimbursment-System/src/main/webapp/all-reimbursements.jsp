@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome to Employee-Reimbursment-System</title>
+<title>Welcome to Employee-Reimbursement-System</title>
 </head>
 <body>
 	<%@ include file="user-menu.jsp"%>
@@ -26,9 +26,9 @@
 	}
 
 	String status = null;
-	if ("all-pending-reimbursments".equals(task)) {
+	if ("all-pending-reimbursements".equals(task)) {
 		status = "PENDING";
-	} else if ("all-resolved-reimbursments".equals(task)) {
+	} else if ("all-resolved-reimbursements".equals(task)) {
 		status = "RESOLVED";
 	}
 	List<ErsReimbursement> list = (List<ErsReimbursement>) request.getAttribute("list");
@@ -39,7 +39,7 @@
 	<div>
 		<h3>
 			<%=status%>
-			Reimbursments
+			Reimbursements
 		</h3>
 
 		<br> <br>
@@ -70,7 +70,7 @@
 				if(status.equals("PENDING")){
 				%>
 				<td><a
-					href="ers?task=approve-reimbursment&reimbId=<%=reimb.getReimbId()%>">Approve</a></td>
+					href="ers?task=approve-reimbursement&reimbId=<%=reimb.getReimbId()%>">Approve</a></td>
 				<%
 				}
 				%>

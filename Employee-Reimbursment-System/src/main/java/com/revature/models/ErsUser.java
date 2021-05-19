@@ -2,6 +2,7 @@ package com.revature.models;
 
 public class ErsUser {
 	private int ersUserId;
+	
 	private String ersUsername;
 
 	private String ersPassword;
@@ -11,22 +12,11 @@ public class ErsUser {
 	private String userLastname;
 
 	private String userEmail;
+	
 	private int userRoleId;
 
 	public ErsUser() {
 
-	}
-
-	public ErsUser(int ersUserId, String ersUsername, String ersPassword, String userFirstname, String userLastname,
-			String userEmail, int userRoleId) {
-		super();
-		this.ersUserId = ersUserId;
-		this.ersUsername = ersUsername;
-		this.ersPassword = ersPassword;
-		this.userFirstname = userFirstname;
-		this.userLastname = userLastname;
-		this.userEmail = userEmail;
-		this.userRoleId = userRoleId;
 	}
 
 	public int getErsUserId() {

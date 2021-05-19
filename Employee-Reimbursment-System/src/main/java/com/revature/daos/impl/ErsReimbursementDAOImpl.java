@@ -77,6 +77,7 @@ public class ErsReimbursementDAOImpl implements ErsReimbursementDAO {
 				reimb.setReimbResolved(rs.getDate("reimb_resolved"));
 				reimb.setReimbAuthor(rs.getInt("reimb_author"));
 				reimb.setReimbResolver(rs.getInt("reimb_resolver"));
+				reimb.setReimbStatusId(rs.getInt("reimb_status_id"));
 				reimb.setReimbDescription(rs.getString("reimb_description"));
 				list.add(reimb);
 			}
@@ -94,7 +95,7 @@ public class ErsReimbursementDAOImpl implements ErsReimbursementDAO {
 	}
 
 	@Override
-	public List<ErsReimbursement> getReimbursment() throws BusinessException {
+	public List<ErsReimbursement> getReimbursement() throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -127,6 +128,37 @@ public class ErsReimbursementDAOImpl implements ErsReimbursementDAO {
 	public int rejectReimbursement(int reimbid) throws BusinessException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<ErsReimbursement> getByUserId(int userId) throws BusinessException {
+		List<ErsReimbursement> list = new ArrayList<ErsReimbursement>();
+		Connection conn = null;
+		try {
+			conn = ConnectionUtil.getConnection();
+			String sql = "select * from ers.ers_reimbursement where reimb_author = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userId);
+
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ErsReimbursement reimb = new ErsReimbursement();
+				reimb.setReimbId(rs.getInt("reimb_id"));
+				reimb.setReimbTypeId(rs.getInt("reimb_type_id"));
+				reimb.setReimbAmount(rs.getDouble("reimb_amount"));
+				reimb.setReimbSubmitted(rs.getDate("reimb_submitted"));
+				reimb.setReimbResolved(rs.getDate("reimb_resolved"));
+				reimb.setReimbAuthor(rs.getInt("reimb_author"));
+				reimb.setReimbResolver(rs.getInt("reimb_resolver"));
+				reimb.setReimbStatusId(rs.getInt("reimb_status_id"));
+				reimb.setReimbDescription(rs.getString("reimb_description"));
+				list.add(reimb);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new BusinessException(e.getMessage());
+		}
 	}
 
 }

@@ -17,7 +17,7 @@ import com.revature.models.ErsReimbursement;
 import com.revature.models.ErsUser;
 import com.revature.util.HtmlUtil;
 
-public class SubmitReimbursmentDelegate {
+public class SubmitReimbursementDelegate {
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

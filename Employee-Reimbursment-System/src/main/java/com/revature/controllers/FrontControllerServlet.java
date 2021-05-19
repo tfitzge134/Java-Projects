@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.delegates.AllReimbursementsDelegate;
-import com.revature.delegates.ApproveReimbursmentDelegate;
+import com.revature.delegates.ReimbursementsDelegate;
+import com.revature.delegates.ApproveReimbursementDelegate;
 import com.revature.delegates.LoginDelegate;
 import com.revature.delegates.LogoutDelegate;
 import com.revature.delegates.MyReimbursementsDelegate;
-import com.revature.delegates.SubmitReimbursmentDelegate;
+import com.revature.delegates.SubmitReimbursementDelegate;
 import com.revature.util.HtmlUtil;
 
 /**
@@ -93,23 +93,29 @@ public class FrontControllerServlet extends HttpServlet {
 			case "logout":
 				LogoutDelegate.handleTask(writer, request, response);
 				break;
-			case "submit-reimbursment":
-				SubmitReimbursmentDelegate.handleTask(writer, request, response);
+			case "submit-reimbursement":
+				SubmitReimbursementDelegate.handleTask(writer, request, response);
 				break;
-			case "approve-reimbursment":
-				ApproveReimbursmentDelegate.handleTask(writer, request, response);
+			case "approve-reimbursement":
+				ApproveReimbursementDelegate.handleTask(writer, request, response);
 				break;
-			case "my-pending-reimbursments":
+			case "my-pending-reimbursements":
 				MyReimbursementsDelegate.handleTask(writer, request, response);
 				break;
-			case "my-resolved-reimbursments":
+			case "my-resolved-reimbursements":
 				MyReimbursementsDelegate.handleTask(writer, request, response);
 				break;
-			case "all-pending-reimbursments":
-				AllReimbursementsDelegate.handleTask(writer, request, response);
+			case "all-pending-reimbursements":
+				ReimbursementsDelegate.handleTask(writer, request, response);
 				break;
-			case "all-resolved-reimbursments":
-				AllReimbursementsDelegate.handleTask(writer, request, response);
+			case "all-resolved-reimbursements":
+				ReimbursementsDelegate.handleTask(writer, request, response);
+				break;
+			case "employee-reimbursements":
+				ReimbursementsDelegate.handleTask(writer, request, response);
+				break;
+			case "all-employees":
+				AllEmployeesDelegate.handleTask(writer, request, response);
 				break;
 			default:
 				HtmlUtil.writerHtmlHeader(writer, request, response);

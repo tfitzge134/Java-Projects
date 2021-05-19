@@ -1,4 +1,4 @@
-package com.revature.delegates;
+package com.revature.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.BusinessException;
 import com.revature.Constants;
-import com.revature.daos.ErsReimbursementDAO;
-import com.revature.daos.impl.ErsReimbursementDAOImpl;
-import com.revature.models.ErsReimbursement;
+import com.revature.daos.ErsUserDAO;
+import com.revature.daos.impl.ErsUserDAOImpl;
+import com.revature.models.ErsUser;
 
-public class AllReimbursementsDelegate {
+public class AllEmployeesDelegate {
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, BusinessException {
@@ -27,20 +27,14 @@ public class AllReimbursementsDelegate {
 			return;
 		}
 
-		String status = null;
-		int statusId = 0;
-		if ("all-pending-reimbursments".equals(task)) {
-			statusId = Constants.PENDING_STATUS_ID;
-		} else if ("all-resolved-reimbursments".equals(task)) {
-			statusId = Constants.RESOLVED_STATUS_ID;
-		}
-		
-		ErsReimbursementDAO dao = new ErsReimbursementDAOImpl();
-		List<ErsReimbursement> list = dao.getAllByStatus(statusId);
-		if(list != null) {
+		int roleId = Constants.EMPLOYEE_ROLE_ID;
+
+		ErsUserDAO dao = new ErsUserDAOImpl();
+		List<ErsUser> list = dao.getByRole(roleId);
+		if (list != null) {
 			request.setAttribute("list", list);
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("all-reimbursments.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("all-employees.jsp");
 		rd.forward(request, response);
 		return;
 	}

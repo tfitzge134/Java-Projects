@@ -14,7 +14,7 @@ import com.revature.daos.impl.ErsReimbursementDAOImpl;
 import com.revature.models.ErsUser;
 import com.revature.util.HtmlUtil;
 
-public class ApproveReimbursmentDelegate {
+public class ApproveReimbursementDelegate {
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
