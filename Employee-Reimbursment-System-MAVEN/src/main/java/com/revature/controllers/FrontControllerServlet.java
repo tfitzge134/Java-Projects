@@ -3,6 +3,7 @@ package com.revature.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,14 +11,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.delegates.AllEmployeesDelegate;
 import com.revature.delegates.ApproveReimbursementDelegate;
 import com.revature.delegates.LoginDelegate;
 import com.revature.delegates.LogoutDelegate;
-import com.revature.delegates.UpdateMyInformationDelegate;
 import com.revature.delegates.ReimbursementsDelegate;
 import com.revature.delegates.RejectReimbursementDelegate;
 import com.revature.delegates.SubmitReimbursementDelegate;
+import com.revature.delegates.UpdateMyInformationDelegate;
 import com.revature.util.HtmlUtil;
 
 /**
@@ -26,6 +30,9 @@ import com.revature.util.HtmlUtil;
 @WebServlet("/ers")
 public class FrontControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+//	private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(FrontControllerServlet.class);
+	private static final Logger logger = LogManager.getLogger(FrontControllerServlet.class);
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -51,6 +58,7 @@ public class FrontControllerServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// Every request must provide value for a parameter called 'task
 		String task = request.getParameter("task");
+		logger.info("Request with task: " + task);
 		// if task is null forward to home screen.
 		if (task == null) {
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
