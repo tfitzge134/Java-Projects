@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.delegates.AllEmployeesDelegate;
 import com.revature.delegates.ApproveReimbursementDelegate;
 import com.revature.delegates.LoginDelegate;
 import com.revature.delegates.LogoutDelegate;
+import com.revature.delegates.UpdateMyInformationDelegate;
 import com.revature.delegates.ReimbursementsDelegate;
 import com.revature.delegates.RejectReimbursementDelegate;
 import com.revature.delegates.SubmitReimbursementDelegate;
@@ -75,6 +77,14 @@ public class FrontControllerServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("user-home.jsp");
 			rd.forward(request, response);
 			return true;
+		case "my-information":
+			rd = request.getRequestDispatcher("my-information.jsp");
+			rd.forward(request, response);
+			return true;
+		case "edit-my-information":
+			rd = request.getRequestDispatcher("edit-my-information.jsp");
+			rd.forward(request, response);
+			return true;
 		}
 		return false;
 	}
@@ -119,6 +129,9 @@ public class FrontControllerServlet extends HttpServlet {
 				break;
 			case "all-employees":
 				AllEmployeesDelegate.handleTask(writer, request, response);
+				break;
+			case "update-my-information":
+				UpdateMyInformationDelegate.handleTask(writer, request, response);
 				break;
 			default:
 				HtmlUtil.writerHtmlHeader(writer, request, response);
