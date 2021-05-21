@@ -97,6 +97,31 @@ public class ErsUserDAOImpl implements ErsUserDAO {
 		}
 	}
 
+	@Override
+	public boolean update(ErsUser user) throws BusinessException {
+		Connection conn = null;
+		try {
+			conn = ConnectionUtil.getConnection();
+			String sql = "UPDATE ers.ers_users SET user_first_name = ?, " 
+					+ " user_last_name = ?, user_email = ? "
+					+ " WHERE ers_users_id = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUserFirstname());
+			pstmt.setString(2, user.getUserLastname());
+			pstmt.setString(3, user.getUserEmail());
+			pstmt.setInt(4, user.getErsUserId());
+
+			int count = pstmt.executeUpdate();
+			if (count == 1) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new BusinessException(e.getMessage());
+		}
+	}
+
 //	public static void main(String[] args) throws SQLException {
 //
 //		ErsUserDAO dao = new ErsUserDAOImpl();

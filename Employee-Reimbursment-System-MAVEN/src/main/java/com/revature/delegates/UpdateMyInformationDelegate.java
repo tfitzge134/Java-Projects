@@ -9,28 +9,62 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.revature.BusinessException;
+import com.revature.daos.ErsUserDAO;
+import com.revature.daos.impl.ErsUserDAOImpl;
 import com.revature.models.ErsUser;
-import com.revature.util.HtmlUtil;
 
 public class UpdateMyInformationDelegate {
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HtmlUtil.writerHtmlHeader(writer, request, response);
-
 		HttpSession session = request.getSession();
 		if (session == null) {
-			writer.print("<p class=\"failure\"> You must login first.<br></p>");
-			writer.print("<a href=\"login.jsp\"> Login</p>");
+			request.setAttribute("error", "You must login first.");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
+			return;
 		} else {
-			writer.print("<p class=\"failure\"> PENDING <br></p>");
-//			ErsUser user = (ErsUser) session.getAttribute("current-user");
-//			request.setAttribute("current-user", user);
-//			RequestDispatcher rd = request.getRequestDispatcher("my-information.jsp");
-//			rd.forward(request, response);
+			ErsUser currentUser = (ErsUser) session.getAttribute("current-user");
+			if (currentUser == null) {
+				request.setAttribute("error", "You must login first.");
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				rd.forward(request, response);
+				return;
+			}
+
+			String userFirstname = request.getParameter("userFirstname");
+			String userLastname = request.getParameter("userLastname");
+			String userEmail = request.getParameter("userEmail");
+
+			currentUser.setUserFirstname(userFirstname);
+			currentUser.setUserLastname(userLastname);
+			currentUser.setUserEmail(userEmail);
+
+			ErsUserDAO dao = new ErsUserDAOImpl();
+			try {
+				boolean result = dao.update(currentUser);
+				if (result) {
+					request.setAttribute("message", "Details updated successfully.");
+					RequestDispatcher rd = request.getRequestDispatcher("my-information.jsp");
+					rd.forward(request, response);
+					return;
+				} else {
+					request.setAttribute("error", "Could NOT update Details.");
+					RequestDispatcher rd = request.getRequestDispatcher("edit-my-information.jsp");
+					rd.forward(request, response);
+					return;
+				}
+			} catch (BusinessException e) {
+				e.printStackTrace();
+				request.setAttribute("error", "Error occurred: " + e.getMessage());
+				RequestDispatcher rd = request.getRequestDispatcher("edit-my-information.jsp");
+				rd.forward(request, response);
+				return;
+			}
+
 		}
-		HtmlUtil.writerHtmlFooter(writer);
 
 	}
 

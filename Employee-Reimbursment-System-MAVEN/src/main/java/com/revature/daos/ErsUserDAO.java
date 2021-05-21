@@ -18,4 +18,6 @@ public interface ErsUserDAO {
 
 	public boolean deleteById(int id) throws BusinessException;
 
+	public boolean update(ErsUser user)  throws BusinessException;
+
 }
