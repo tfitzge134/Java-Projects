@@ -3,13 +3,13 @@ package com.revature.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,7 +30,7 @@ import com.revature.util.HtmlUtil;
 @WebServlet("/ers")
 public class FrontControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private static final Logger logger = LogManager.getLogger(FrontControllerServlet.class);
 
 	/**
@@ -75,11 +75,22 @@ public class FrontControllerServlet extends HttpServlet {
 	private boolean forwardTask(String task, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd;
-		switch (task) {
-		case "login-form":
+		// check for login session.
+		if ("login-form".equals(task)) {
 			rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 			return true;
+		}
+
+		HttpSession session = request.getSession();
+		if (session == null) {
+			request.setAttribute("error", "You must login first.");
+			rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
+			return true;
+		}
+
+		switch (task) {
 		case "user-home":
 			rd = request.getRequestDispatcher("user-home.jsp");
 			rd.forward(request, response);

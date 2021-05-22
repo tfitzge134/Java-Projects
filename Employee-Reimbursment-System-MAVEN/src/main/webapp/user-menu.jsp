@@ -5,7 +5,17 @@
 
 	<%
 	ErsUser user = (ErsUser) session.getAttribute("current-user");
-	if(user != null){
+	if(user == null){
+		%>
+	<div >
+        <h1>Youre session is invalid. You must login first.</h1>
+            <div >
+            <a href="login.jsp">Login</a>
+            <br>
+        </div>
+	<%
+	}
+	else{
 		ErsUserRole role = (ErsUserRole) session.getAttribute("current-user-role");
 		String roleName = role.getErsUserrole();
 	%>
