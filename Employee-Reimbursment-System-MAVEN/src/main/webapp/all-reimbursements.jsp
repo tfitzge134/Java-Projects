@@ -90,9 +90,9 @@
 					if(ErsUserUtil.getCurrentUserRoleId(request) == Constants.MANAGER_ROLE_ID){
 				%>
 				<td><a
-					href="ers?task=approve-reimbursement&reimbId=<%=reimb.getReimbId()%>">Approve</a> | 
+					href="ers?task=approve-reimbursement&userId=<%=reimb.getReimbAuthor()%>&reimbId=<%=reimb.getReimbId()%>">Approve</a> | 
 					<a
-					href="ers?task=reject-reimbursement&reimbId=<%=reimb.getReimbId()%>">Reject</a></td>
+					href="ers?task=reject-reimbursement&userId=<%=reimb.getReimbAuthor()%>&reimbId=<%=reimb.getReimbId()%>">Reject</a></td>
 				<%
 						}
 						else{

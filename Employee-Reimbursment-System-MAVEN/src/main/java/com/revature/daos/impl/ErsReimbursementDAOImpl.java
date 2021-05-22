@@ -10,8 +10,7 @@ import com.revature.BusinessException;
 import com.revature.Constants;
 import com.revature.daos.ErsReimbursementDAO;
 import com.revature.models.ErsReimbursement;
-
-import util.ConnectionUtil;
+import com.revature.util.ConnectionUtil;
 
 public class ErsReimbursementDAOImpl implements ErsReimbursementDAO {
 

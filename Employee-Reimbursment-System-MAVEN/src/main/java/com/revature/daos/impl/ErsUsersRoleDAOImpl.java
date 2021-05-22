@@ -7,8 +7,7 @@ import java.sql.ResultSet;
 import com.revature.BusinessException;
 import com.revature.daos.ErsUsersRoleDAO;
 import com.revature.models.ErsUserRole;
-
-import util.ConnectionUtil;
+import com.revature.util.ConnectionUtil;
 
 public class ErsUsersRoleDAOImpl implements ErsUsersRoleDAO {
 

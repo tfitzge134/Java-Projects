@@ -9,8 +9,7 @@ import java.util.List;
 import com.revature.BusinessException;
 import com.revature.daos.ErsUserDAO;
 import com.revature.models.ErsUser;
-
-import util.ConnectionUtil;
+import com.revature.util.ConnectionUtil;
 
 public class ErsUserDAOImpl implements ErsUserDAO {
 

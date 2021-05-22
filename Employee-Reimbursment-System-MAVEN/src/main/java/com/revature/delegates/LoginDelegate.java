@@ -39,6 +39,7 @@ public class LoginDelegate {
 			error += "Password required.<br>";
 		}
 		if (username != null || password != null) {
+			username = username.trim().toLowerCase();
 			ErsUserDAO userDao = new ErsUserDAOImpl();
 			try {
 				ErsUser user = userDao.verifyPassword(username, password);
