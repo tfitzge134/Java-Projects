@@ -122,6 +122,36 @@ public class ErsUserDAOImpl implements ErsUserDAO {
 		}
 	}
 
+	@Override
+	public ErsUser getById(int userId) throws BusinessException {
+		Connection conn = null;
+		try {
+			conn = ConnectionUtil.getConnection();
+			String sql = "select * from ers.ers_users where ers_users_id = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userId);
+
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				ErsUser user = new ErsUser();
+				user.setErsUserId(rs.getInt("ers_users_id"));
+				user.setUserFirstname(rs.getString("user_first_name"));
+				user.setUserLastname(rs.getString("user_last_name"));
+				user.setUserEmail(rs.getString("user_email"));
+				user.setUserRoleId(rs.getInt("user_role_id"));
+				user.setErsUsername(rs.getString("ers_username"));
+				return user;
+			} else {
+				return null;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new BusinessException(e.getMessage());
+		}
+
+	}
+
 //	public static void main(String[] args) throws SQLException {
 //
 //		ErsUserDAO dao = new ErsUserDAOImpl();

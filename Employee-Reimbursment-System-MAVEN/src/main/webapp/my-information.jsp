@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css"/>
 <title>Welcome to Employee-Reimbursement-System</title>
 </head>
 <body>

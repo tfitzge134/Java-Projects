@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css"/>
 <title>Welcome to Employee-Reimbursement-System</title>
 </head>
 <body>
@@ -27,30 +28,34 @@
 		String userEmail = (currentUser.getUserEmail() == null) ? "" : currentUser.getUserEmail();
 	%>	
 	<div>
-		<h3>My Information</h3>
-
+		<h3>Edit My Information</h3>
 		 <br>
             <br>
-             <form action="ers" method="POST">
+             <form id="the-form" action="ers" method="POST">
                 <input type="hidden" name="task" value="update-my-information">
                 <label>User Name:</label>
                 <%=ersUsername %>
                 <br>
                 <label>First Name:</label>
-                <input type="text" name="userFirstname" value="<%=userFirstname %>" class="form-control">
+                <input type="text" id="userFirstname" name="userFirstname" value="<%=userFirstname %>" class="form-control">
                 <br>
                 <label>Last Name:</label>
-                <input type="text" name="userLastname" value="<%=userLastname %>" class="form-control">
+                <input type="text" id="userLastname" name="userLastname" value="<%=userLastname %>" class="form-control">
                 <br>
                 <label>Email</label>
-                <input type="text" name="userEmail" value="<%=userEmail %>" class="form-control">
+                <input type="text" id="userEmail" name="userEmail" value="<%=userEmail %>" class="form-control">
                 <br>         
-                <br>         
-                <input type="submit" value="Submit" class="button">
+                 <input type="button" onclick="submitForm()" value="Update" class="button">
             </form>
-	</div>
+        </div>
 	<%
 	}
 	%>
+	
+		
+<script src="edit-my-information-script.js">
+
+</script>
+	
 </body>
 </html>

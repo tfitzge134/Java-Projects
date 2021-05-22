@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css"/>
 <title>Welcome to Employee-Reimbursement-System</title>
 </head>
 <body>
@@ -17,7 +18,6 @@
 		<h3>Submit Reimbursement-System</h3>
 
 		 <br>
-            <br>
              <form id="the-form" action="ers" method="POST">
                 <input type="hidden" name="task" value="submit-reimbursement">
                 <label>Description:</label>
@@ -39,30 +39,8 @@
 	</div>
 	
 	
-<script>
-function submitForm() {
-	var reimbDescription = document.getElementById("reimbDescription").value;
-	if(reimbDescription == ""){
-		alert("Description Required.");
-		return;
-	}
-	var reimbAmount = document.getElementById("reimbAmount").value;
-	if(reimbAmount == ""){
-		alert("Amount Required.");
-		return;
-	}
-	if(reimbAmount == ""){
-		alert("Amount Required.");
-		return;
-	}
-	var typeId = document.getElementById("typeId").value;
-	if(typeId == ""){
-		alert("Type Required.");
-		return;
-	}
-	var form = document.getElementById("the-form");
-  	form.submit();
-}
+<script src="submit-reimbursement.js">
+
 </script>
 </body>
 </html>

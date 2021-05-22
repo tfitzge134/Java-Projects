@@ -11,6 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css"/>
 <title>Welcome to Employee-Reimbursement-System</title>
 </head>
 <body>
@@ -28,13 +29,21 @@
 	}
 
 	String status = null;
+	String title = null;
+	ErsUser employee = null;
 	if ("all-pending-reimbursements".equals(task)) {
-		status = "PENDING";
+		title = "ALL PENDING Reimbursements";
 	} else if ("all-resolved-reimbursements".equals(task)) {
-		status = "RESOLVED";
+		title = "ALL RESOLVED Reimbursements";
+	}
+	else if ("my-pending-reimbursements".equals(task)) {
+		title = "MY PENDING Reimbursements";
+	} else if ("my-resolved-reimbursements".equals(task)) {
+		title = "MY RESOLVED Reimbursements";
 	}
 	else{
-		status = "Employee";
+		employee = (ErsUser) request.getAttribute("employee");
+		title = "Reimbursements for EMPLOYEE: "  + employee.getErsUsername();
 	}
 	List<ErsReimbursement> list = (List<ErsReimbursement>) request.getAttribute("list");
 	if (list == null) {
@@ -43,11 +52,10 @@
 	%>
 	<div>
 		<h3>
-			<%=status%>
-			Reimbursements
+			<%=title%>
 		</h3>
 
-		<br> <br>
+		<br>
 
 		<table border=1>
 			<tr>
@@ -60,6 +68,11 @@
 				<th>Status</th>
 			</tr>
 
+			<%if((list == null) || list.isEmpty()) { %>
+			<h4> NO Records found.</h4>
+			<%
+			}
+			%>
 			<%
 			for (ErsReimbursement reimb : list) {
 				String description = reimb.getReimbDescription();

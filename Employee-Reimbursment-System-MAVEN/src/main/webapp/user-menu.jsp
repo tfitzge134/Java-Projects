@@ -5,7 +5,12 @@
 
 	<%
 	ErsUser user = (ErsUser) session.getAttribute("current-user");
-	if(user != null){
+	if(user == null){
+		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+		rd.forward(request, response);
+		return;
+	}
+	else{
 		ErsUserRole role = (ErsUserRole) session.getAttribute("current-user-role");
 		String roleName = role.getErsUserrole();
 	%>
@@ -16,12 +21,12 @@
 		<a href="ers?task=user-home">Home</a> | 
 		
 		<h3> Welcome, <%=user.getErsUsername()%>! </h3>
-		 <br> <br>
+		 <br>
 		<%
 		if (roleName.equalsIgnoreCase("employee")) {
 		%>
 
-		Employee Menu:  <br> <br>
+		<h4>Employee Menu:  </h4>
 		<a href="submit-reimbursement.jsp">Submit Reimbursement</a> | 
 		<a href="ers?task=my-pending-reimbursements&userId=<%=user.getErsUserId()%>">Pending reimbursements</a> | 
 		<a href="ers?task=my-resolved-reimbursements&userId=<%=user.getErsUserId()%>">Resolved reimbursements</a> | 
@@ -33,7 +38,7 @@
 		else if (roleName.equalsIgnoreCase("manager")) {
 		%>
 
-		Manager Menu:  <br> <br>
+		<h4>Manager Menu:  </h4>
 		<a href="ers?task=all-pending-reimbursements">All Pending reimbursements</a> | 
 		<a href="ers?task=all-resolved-reimbursements">All Resolved reimbursements</a> | 
 		<a href="ers?task=all-employees">All Employees</a> | 

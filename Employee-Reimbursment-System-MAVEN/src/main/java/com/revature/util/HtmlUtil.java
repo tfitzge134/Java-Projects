@@ -13,7 +13,7 @@ public class HtmlUtil {
 	public static void writerHtmlHeader(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		writer.print("<!DOCTYPE html>" + "<html>" + "<head>" + "<meta charset=\"UTF-8\">"
-				+ " <link rel=\"stylesheet\" href=\"style.css\"/>" + "<title>Welcome to Reva</title>" + "</head>"
+				+ " <link rel=\"stylesheet\" href=\"css/style.css\"/>" + "<title>Welcome to Reva</title>" + "</head>"
 				+ "    <body>" + "        <div>" + "");
 
 		RequestDispatcher rd = request.getRequestDispatcher("user-menu.jsp");

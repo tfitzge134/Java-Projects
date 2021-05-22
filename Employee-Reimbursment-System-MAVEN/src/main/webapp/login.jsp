@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css"/>
 <title>Welcome to Employee-Reimbursement-System</title>
 </head>
 <body>
@@ -29,19 +30,22 @@ String error = (String)request.getAttribute("error");
             %>
             
             <br>
-            <form action="ers" method="POST">
+            <form id="the-form" action="ers" method="POST">
                 <input type="hidden" name="task" value="login">
                 <label>User name:</label>
-                <input type="text" name="username" class="form-control">
+                <input type="text" name="username" id="username" class="form-control">
                 <br>
                 <label>Password</label>
-                <input type="password" name="password" class="form-control">
+                <input type="password" name="password" id="password" class="form-control">
                 <br>
-                <input type="submit" value="Sign In" class="button">
+                <input type="button" onclick="submitForm()" value="Sign In" class="button">
             </form>
         </div>
         
 	
+<script src="login-script.js">
+
+</script>
 	
 </body>
 </html>

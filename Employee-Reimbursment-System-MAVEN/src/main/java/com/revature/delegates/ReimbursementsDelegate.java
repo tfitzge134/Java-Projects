@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.BusinessException;
 import com.revature.daos.ErsReimbursementDAO;
+import com.revature.daos.ErsUserDAO;
 import com.revature.daos.impl.ErsReimbursementDAOImpl;
+import com.revature.daos.impl.ErsUserDAOImpl;
 import com.revature.models.ErsReimbursement;
+import com.revature.models.ErsUser;
 
 public class ReimbursementsDelegate {
 
@@ -45,6 +48,9 @@ public class ReimbursementsDelegate {
 			int userId = Integer.parseInt(userIdStr);
 			if ("employee-reimbursements".equals(task)) {
 				list = dao.getByUserId(userId);
+				ErsUserDAO userDao = new ErsUserDAOImpl();
+				ErsUser employee = userDao.getById(userId);
+				request.setAttribute("employee", employee);
 			} else if ("my-pending-reimbursements".equals(task)) {
 				list = dao.getAllPendingForUser(userId);
 			} else if ("my-resolved-reimbursements".equals(task)) {
