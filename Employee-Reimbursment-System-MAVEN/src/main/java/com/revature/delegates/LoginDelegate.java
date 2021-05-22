@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.BusinessException;
 import com.revature.daos.ErsUserDAO;
 import com.revature.daos.ErsUsersRoleDAO;
@@ -19,6 +22,7 @@ import com.revature.models.ErsUserRole;
 import com.revature.util.HtmlUtil;
 
 public class LoginDelegate {
+	private static final Logger logger = LogManager.getLogger(LoginDelegate.class);
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -39,8 +43,10 @@ public class LoginDelegate {
 			try {
 				ErsUser user = userDao.verifyPassword(username, password);
 				if (user == null) {
-					error += "Invalid login credentials.<br>";
+					error += "Invalid LOGIN credentials.<br>";
+					logger.info("Login failed for user: " + username);
 				} else {
+					logger.info("Login SUCCESS for user: " + username);
 					int userRoleId = user.getUserRoleId();
 					ErsUsersRoleDAO roleDao = new ErsUsersRoleDAOImpl();
 					ErsUserRole role = roleDao.getById(userRoleId);
@@ -54,6 +60,7 @@ public class LoginDelegate {
 					return;
 				}
 			} catch (BusinessException e) {
+				logger.error("Error occurred: " + e.getMessage());
 				e.printStackTrace();
 				error += "Error occurred: " + e.getMessage();
 			}

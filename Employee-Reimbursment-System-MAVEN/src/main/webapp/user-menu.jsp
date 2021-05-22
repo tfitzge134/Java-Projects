@@ -5,12 +5,7 @@
 
 	<%
 	ErsUser user = (ErsUser) session.getAttribute("current-user");
-	if(user == null){
-		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-		rd.forward(request, response);
-		return;
-	}
-	else{
+	if(user != null){
 		ErsUserRole role = (ErsUserRole) session.getAttribute("current-user-role");
 		String roleName = role.getErsUserrole();
 	%>

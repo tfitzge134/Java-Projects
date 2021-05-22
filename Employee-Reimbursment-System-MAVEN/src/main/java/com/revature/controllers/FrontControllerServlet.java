@@ -31,7 +31,6 @@ import com.revature.util.HtmlUtil;
 public class FrontControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-//	private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(FrontControllerServlet.class);
 	private static final Logger logger = LogManager.getLogger(FrontControllerServlet.class);
 
 	/**

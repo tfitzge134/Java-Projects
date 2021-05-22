@@ -9,6 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.BusinessException;
 import com.revature.daos.ErsReimbursementDAO;
 import com.revature.daos.ErsUserDAO;
@@ -18,6 +21,7 @@ import com.revature.models.ErsReimbursement;
 import com.revature.models.ErsUser;
 
 public class ReimbursementsDelegate {
+	private static final Logger logger = LogManager.getLogger(ReimbursementsDelegate.class);
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, BusinessException {

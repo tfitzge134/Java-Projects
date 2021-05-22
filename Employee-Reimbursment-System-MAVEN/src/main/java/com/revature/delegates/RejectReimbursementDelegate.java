@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.BusinessException;
 import com.revature.daos.ErsReimbursementDAO;
 import com.revature.daos.impl.ErsReimbursementDAOImpl;
@@ -15,6 +18,7 @@ import com.revature.models.ErsUser;
 import com.revature.util.HtmlUtil;
 
 public class RejectReimbursementDelegate {
+	private static final Logger logger = LogManager.getLogger(RejectReimbursementDelegate.class);
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -48,11 +52,14 @@ public class RejectReimbursementDelegate {
 				try {
 					boolean result = reimbDao.rejectReimbursement(reimbId);
 					if (result) {
-						writer.print("<p class=\"success\"> ErsReimbursement Rejected.</p>");
+						logger.info("Reimbursement Rejected, reimbId: " + reimbId);
+						writer.print("<p class=\"success\"> Reimbursement Rejected.</p>");
 					} else {
 						writer.print("<p class=\"failure\"> NO record matched.</p>");
+						logger.info("NO record matched, reimbId: " + reimbId);
 					}
 				} catch (BusinessException e) {
+					logger.error("Error occurred: " + e.getMessage());
 					e.printStackTrace();
 					writer.print("<p class=\"failure\"> Error occurred: " + e.getMessage() + "</p>");
 				}

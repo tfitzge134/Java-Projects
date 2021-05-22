@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.BusinessException;
 import com.revature.Constants;
 import com.revature.daos.ErsReimbursementDAO;
@@ -18,6 +21,7 @@ import com.revature.models.ErsUser;
 import com.revature.util.HtmlUtil;
 
 public class SubmitReimbursementDelegate {
+	private static final Logger logger = LogManager.getLogger(SubmitReimbursementDelegate.class);
 
 	public static void handleTask(PrintWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -79,12 +83,14 @@ public class SubmitReimbursementDelegate {
 				try {
 					boolean result = reimbDao.add(reimb);
 					if (result) {
-
-						writer.print("<p class=\"success\"> ErsReimbursement Added.</p>");
+						logger.info("Reimbursement Added.");
+						writer.print("<p class=\"success\"> Reimbursement Added.</p>");
 					} else {
+						logger.error("ERROR: Reimbursement NOT Added.");
 						writer.print("<p class=\"failure\"> Error occurred.</p>");
 					}
 				} catch (BusinessException e) {
+					logger.error("Error occurred: " + e.getMessage());
 					e.printStackTrace();
 					writer.print("<p class=\"failure\"> Error occurred: " + e.getMessage() + "</p>");
 				}
