@@ -8,36 +8,31 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="User")
+@Table(name = "User")
 public class User {
-	
+
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "user_id")
 	private int id;
-	
-	@Column(name="email", unique=true, nullable=false)
-	private String email;
-	
-	@Column(name="username", unique=true, nullable=false)
+
+	@Column(name = "username", unique = true, nullable = false)
 	private String username;
-	
-	@Column(name="password", nullable=false)
+
+	@Column(name = "password", nullable = false)
 	private String password;
-	
-	@Column(name="loggedOn")
-	private boolean loggedOn;
+
+//	@Column(name="loggedOn")
+//	private boolean loggedOn;
 
 	public User() {
 		super();
 	}
 
-	public User(String email, String username, String password) {
+	public User(String username, String password) {
 		super();
-		this.email = email;
 		this.username = username;
 		this.password = password;
-		this.loggedOn = false;
 	}
 
 	public int getId() {
@@ -46,14 +41,6 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getUsername() {
@@ -72,18 +59,9 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isLoggedOn() {
-		return loggedOn;
-	}
-
-	public void setLoggedOn(boolean loggedOn) {
-		this.loggedOn = loggedOn;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
-				+ ", loggedOn=" + loggedOn + "]";
+		return "User [id=" + id + ", username=" + username + "]";
 	}
-	
+
 }

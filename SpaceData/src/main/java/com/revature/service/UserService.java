@@ -22,12 +22,12 @@ public class UserService {
 		this.uRepo = repo;
 	}
 	
-	public String registerUser(String email, String username, String password) {
+	public String registerUser(String username, String password) {
 		try {
-			uRepo.save(new User(email, username, password));
+			uRepo.save(new User(username, password));
 			return "User created successfully";
 		} catch(Exception e) {
-			return "User was not created successfully";
+			return "Error: User was not created";
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class UserService {
 				return "User login failed";
 			}
 			else {
-				loggedIn.setLoggedOn(true);
+//				loggedIn.setLoggedOn(true);
 				uRepo.save(loggedIn);
 				return "User logged in successfully";
 			}
@@ -48,15 +48,12 @@ public class UserService {
 	}
 	
 	public User searchUsers(String username, String email) {
-		try {
-			return uRepo.findUserByUsernameOrEmail(username, email);
-		}catch(Exception e) {
-			return null;
-		}
-	}
-	
-	public List<User> getLoggedOnUsers(){
-		return uRepo.findAllLoggedOnUsers();
+//		try {
+//			return uRepo.findUserByUsernameOrEmail(username, email);
+//		}catch(Exception e) {
+//			return null;
+//		}
+		return null;
 	}
 	
 }

@@ -9,10 +9,10 @@ import com.revature.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-	User findUserByUsernameOrEmail(String username, String email);
+//	User findUserByUsernameOrEmail(String username, String email);
 	
 	User findUserByUsernameAndPassword(String username, String password);
 	
-	@Query("SELECT u FROM User u WHERE u.loggedOn = true")
-	List<User> findAllLoggedOnUsers();
+//	@Query("SELECT u FROM User u WHERE u.loggedOn = true")
+//	List<User> findAllLoggedOnUsers();
 }

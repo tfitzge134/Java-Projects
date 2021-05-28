@@ -30,7 +30,7 @@ public class UserController {
 	
 	@PostMapping(value="/register")
 	public ResponseEntity<String> registerUser(@RequestBody LinkedHashMap<String, String> uMap){
-		String message = uServ.registerUser(uMap.get("email"), uMap.get("username"), uMap.get("password"));
+		String message = uServ.registerUser(uMap.get("username"), uMap.get("password"));
 		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
 	
@@ -45,11 +45,11 @@ public class UserController {
 		User retrieved = uServ.searchUsers(search, search);
 		return new ResponseEntity<User>(retrieved, HttpStatus.OK);
 	}
-	
-	@GetMapping(value="/loggedOn")
-	public ResponseEntity<List<User>> getLoggedOn(){
-		List<User> uList = uServ.getLoggedOnUsers();
-		return new ResponseEntity<List<User>>(uList, HttpStatus.OK);
-	}
+//	
+//	@GetMapping(value="/loggedOn")
+//	public ResponseEntity<List<User>> getLoggedOn(){
+//		List<User> uList = uServ.getLoggedOnUsers();
+//		return new ResponseEntity<List<User>>(uList, HttpStatus.OK);
+//	}
 	
 }
