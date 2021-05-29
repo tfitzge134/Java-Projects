@@ -9,8 +9,6 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-
-
 @Entity
 @Component
 @Table(name = "user")
@@ -27,8 +25,8 @@ public class User {
 	@Column(name = "password", nullable = false)
 	private String password;
 
-//	@Column(name="loggedOn")
-//	private boolean loggedOn;
+	@Column(name = "logged_on")
+	private Boolean loggedOn;
 
 	public User() {
 		super();
@@ -63,16 +61,18 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-/*
- * @Override
-	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
-				+ ", loggedOn=" + loggedOn + "]";
+
+	public Boolean isLoggedOn() {
+		return loggedOn;
 	}
- */
+
+	public void setLoggedOn(Boolean loggedOn) {
+		this.loggedOn = loggedOn;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username +", password=" + password+ "]";
+		return "User [id=" + id + ", username=" + username + ", loggedOn=" + loggedOn + "]";
 	}
 
 }

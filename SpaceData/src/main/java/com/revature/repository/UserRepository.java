@@ -14,7 +14,9 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	User findUserByUsernameAndPassword(String username, String password);
 
 	User findUserByUsername(String username);
+
+	List<User> findUserByLoggedOn(boolean loggedOn);
 	
-//	@Query("SELECT u FROM User u WHERE u.loggedOn = true")
+//	@Query("SELECT u FROM user u WHERE u.logged_on = true")
 //	List<User> findAllLoggedOnUsers();
 }
