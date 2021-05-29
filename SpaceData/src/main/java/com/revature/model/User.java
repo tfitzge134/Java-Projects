@@ -7,14 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+
+
 @Entity
-@Table(name = "User")
+@Component
+@Table(name = "user")
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "user_id")
-	private int id;
+	@Column(name = "userid")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
 	@Column(name = "username", unique = true, nullable = false)
 	private String username;
@@ -35,11 +40,11 @@ public class User {
 		this.password = password;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -58,10 +63,16 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+/*
+ * @Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
+				+ ", loggedOn=" + loggedOn + "]";
+	}
+ */
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + "]";
+		return "User [id=" + id + ", username=" + username +", password=" + password+ "]";
 	}
 
 }
