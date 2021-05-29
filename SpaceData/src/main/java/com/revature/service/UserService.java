@@ -27,6 +27,7 @@ public class UserService {
 			uRepo.save(new User(username, password));
 			return "User created successfully";
 		} catch(Exception e) {
+			e.printStackTrace();
 			return "Error: User was not created";
 		}
 	}
@@ -43,17 +44,17 @@ public class UserService {
 				return "User logged in successfully";
 			}
 		}catch(Exception e) {
+			e.printStackTrace();
 			return "User login failed";
 		}
 	}
 	
-	public User searchUsers(String username, String email) {
-//		try {
-//			return uRepo.findUserByUsernameOrEmail(username, email);
-//		}catch(Exception e) {
-//			return null;
-//		}
-		return null;
+	public User searchUsers(String username) {
+		try {
+			return uRepo.findUserByUsername(username);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
-	
 }

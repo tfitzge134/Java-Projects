@@ -40,10 +40,23 @@ public class UserController {
 		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/search/{search}")
-	public ResponseEntity<User> searchUsers(@PathVariable("search")String search){
-		User retrieved = uServ.searchUsers(search, search);
+	@PostMapping(value="/searchUser")
+	public ResponseEntity<User> searchUser(@RequestBody LinkedHashMap<String, String> uMap){
+		User retrieved = uServ.searchUsers(uMap.get("username"));
 		return new ResponseEntity<User>(retrieved, HttpStatus.OK);
+	}
+	
+	@GetMapping(value="/search/{username}")
+	public ResponseEntity<User> searchUsers(@PathVariable("username")String username){
+		User retrieved = uServ.searchUsers(username);
+		return new ResponseEntity<User>(retrieved, HttpStatus.OK);
+	}
+	
+	@GetMapping(value="/usernameExists/{username}")
+	public ResponseEntity<String> usernameExists(@PathVariable("username")String username){
+		User retrieved = uServ.searchUsers(username);
+		String message = (retrieved == null) ? "NO such user" : "User FOUND";
+		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
 //	
 //	@GetMapping(value="/loggedOn")
